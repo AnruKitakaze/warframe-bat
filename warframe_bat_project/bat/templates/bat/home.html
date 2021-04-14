@@ -1,0 +1,15 @@
+{% extends "bat/base.html" %}
+{% block content %}
+    {% for weapon in weapons %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ weapon.name }}</a>
+                    <small class="text-muted"> of Tier {{ weapon.tier }}</small>
+                </div>
+                <h2><a class="article-title" href="#">Type: {{ weapon.type }}</a></h2>
+                <p class="article-content">Specific description: {{ weapon.info }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

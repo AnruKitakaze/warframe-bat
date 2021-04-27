@@ -4,11 +4,11 @@
         <article class="media content-section">
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ weapon.name }}</a>
-                    <small class="text-muted"> of Tier {{ weapon.tier }}</small>
+                    <a class="mr-2" href="#">{{ weapon.weapon_name }}</a>
+                    <small class="text-muted"> is a {{ weapon.weapon_class }}</small>
                 </div>
-                <h2><a class="article-title" href="#">Type: {{ weapon.type }}</a></h2>
-                <p class="article-content">Specific description: {{ weapon.info }}</p>
+                <h2><a class="article-title" href="#">Type: {{ weapon.weapon_class }}</a></h2>
+                <p class="article-content">Specific description: "No info yet"</p>
             </div>
         </article>
     {% endfor %}

@@ -1,25 +1,10 @@
 from django.shortcuts import render
-
-
-weapons = [
-    {
-        'name': 'Braton_Prime',
-        'type': 'Primary',
-        'info': 'Shoot bullets, oof!',
-        'tier': 'C-'
-    },
-    {
-        'name': 'Braton',
-        'type': 'Primary',
-        'info': 'Shoot weak bullets, oof!',
-        'tier': 'D-'
-    }
-]
+from .models import Weapon
 
 
 def home(request):
     context = {
-        'weapons': weapons,
+        'weapons': Weapon.objects.all(),
         'title': 'Home'
     }
     return render(request, 'bat/home.html', context)

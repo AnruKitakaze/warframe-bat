@@ -16,14 +16,14 @@ class WeaponAttackStats(models.Model):
     crit_chance = models.FloatField(null=False, default=0.0)
     crit_multiplier = models.FloatField(null=False, default=0.0)
     status_chance = models.FloatField(null=False, default=0.0)
-    multishot = models.FloatField(null=False, default=0.0)
+    multishot = models.FloatField(null=False, default=1.0)
     
     accuracy = models.FloatField(null=False, default=0.0)
     fire_rate = models.FloatField(null=False, default=0.0)
     charge_speed = models.FloatField(null=False, default=0.0)
     magazine_size = models.FloatField(null=False, default=0.0)
-    reload_time = models.FloatField(null=False, default=0.0)
     max_ammo = models.FloatField(null=False, default=0.0)
+    reload_time = models.FloatField(null=False, default=0.0)
     damage_falloff_percent = models.FloatField(null=False, default=0.0)
     punch_through = models.FloatField(null=False, default=0.0)
 

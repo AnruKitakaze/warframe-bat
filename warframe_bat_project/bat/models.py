@@ -3,7 +3,9 @@ from django.db import models
 
 class Weapon(models.Model):
     weapon_name = models.CharField(primary_key=True, max_length=100)
-    weapon_class = models.CharField(max_length=100)
+
+    weapon_slot = models.CharField(max_length=100, default='Primary')
+    weapon_type = models.CharField(max_length=100, default='Rifle')
 
     def __str__(self):
         return self.weapon_name
@@ -11,7 +13,7 @@ class Weapon(models.Model):
 
 class WeaponAttackStats(models.Model):
     weapon_name = models.ForeignKey(Weapon, on_delete=models.CASCADE)
-    attack_type = models.IntegerField()
+    attack_type = models.CharField(null=False, max_length=100, default='Primary')
 
     crit_chance = models.FloatField(null=False, default=0.0)
     crit_multiplier = models.FloatField(null=False, default=0.0)
@@ -50,3 +52,36 @@ class WeaponAttackStats(models.Model):
 
     def __str__(self):
         return self.weapon_name.__str__()
+
+
+class Mod(models.Model):
+    mod_name = models.CharField(primary_key=True, max_length=100)
+
+    target_weapon_name = models.CharField(max_length=100)
+    target_weapon_slot = models.CharField(max_length=100)
+    target_weapon_type = models.CharField(max_length=100)
+
+    damage = models.FloatField(null=False, default=0.0)
+
+    crit_chance = models.FloatField(null=False, default=0.0)
+    crit_multiplier = models.FloatField(null=False, default=0.0)
+    status_chance = models.FloatField(null=False, default=0.0)
+    multishot = models.FloatField(null=False, default=0.0)
+
+    accuracy = models.FloatField(null=False, default=0.0)
+    fire_rate = models.FloatField(null=False, default=0.0)
+    charge_speed = models.FloatField(null=False, default=0.0)
+    magazine_size = models.FloatField(null=False, default=0.0)
+    max_ammo = models.FloatField(null=False, default=0.0)
+    reload_time = models.FloatField(null=False, default=0.0)
+    damage_falloff_percent = models.FloatField(null=False, default=0.0)
+    punch_through = models.FloatField(null=False, default=0.0)
+
+    impact = models.FloatField(null=False, default=0.0)
+    puncture = models.FloatField(null=False, default=0.0)
+    slash = models.FloatField(null=False, default=0.0)
+
+    heat = models.FloatField(null=False, default=0.0)
+    cold = models.FloatField(null=False, default=0.0)
+    electric = models.FloatField(null=False, default=0.0)
+    toxin = models.FloatField(null=False, default=0.0)

@@ -6,6 +6,7 @@ body {
   
   h1, h2, h3, h4, h5, h6 {
     color: #e2e2e2;
+    text-decoration: none;
   }
   
   ul {
@@ -43,6 +44,7 @@ body {
   
   .article-title {
     color: #e2e2e2;
+    text-decoration: none;
   }
   
   a.article-title:hover {
@@ -86,4 +88,14 @@ body {
   
   .account-heading {
     font-size: 2.5rem;
+  }
+
+  .mr-2 {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .mr-2 a:hover {
+    color: #ffffff;
+    text-decoration: none;
   }

@@ -109,3 +109,18 @@ class ResistancesOfDefenceResource(models.Model):
 
 class Fraction(models.Model):
     fraction_name = models.CharField(primary_key=True, max_length=100)
+
+
+class Target(models.Model):
+    target_name = models.CharField(primary_key=True, max_length=100)
+    target_fraction = models.ForeignKey(Fraction, on_delete=models.CASCADE)
+
+    target_shield_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_shield_type')
+    target_shield_base_value = models.FloatField(null=False, default=0)
+
+    target_health_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_health_type')
+    target_health_base_value = models.FloatField(null=False, default=0)
+
+    target_armor_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_armor_type')
+    target_armor_base_value = models.FloatField(null=False, default=0)
+

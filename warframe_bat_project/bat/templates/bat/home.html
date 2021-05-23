@@ -1,5 +1,17 @@
 {% extends "bat/base.html" %}
 {% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <label for="weapons">Choose weapon</label>
+                <select id="weapons" name="weapons">
+                    {% for weapon in weapons %}
+                        <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </article>
     {% for weapon in weapons %}
         <article class="media content-section">
             <div class="media-body">

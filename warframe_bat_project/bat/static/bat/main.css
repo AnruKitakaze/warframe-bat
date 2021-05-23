@@ -99,3 +99,7 @@ body {
     color: #ffffff;
     text-decoration: none;
   }
+
+  .options {
+    margin: 5px;
+  }

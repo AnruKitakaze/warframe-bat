@@ -105,3 +105,7 @@ class ResistancesOfDefenceResource(models.Model):
     magnetic = models.FloatField(null=False, default=0.0)
     radiation = models.FloatField(null=False, default=0.0)
     viral = models.FloatField(null=False, default=0.0)
+
+
+class Fraction(models.Model):
+    fraction_name = models.CharField(primary_key=True, max_length=100)

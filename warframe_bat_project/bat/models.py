@@ -85,3 +85,23 @@ class Mod(models.Model):
     cold = models.FloatField(null=False, default=0.0)
     electric = models.FloatField(null=False, default=0.0)
     toxin = models.FloatField(null=False, default=0.0)
+
+
+class ResistancesOfDefenceResource(models.Model):
+    defence_resource_name = models.CharField(primary_key=True, max_length=100)
+
+    impact = models.FloatField(null=False, default=0.0)
+    puncture = models.FloatField(null=False, default=0.0)
+    slash = models.FloatField(null=False, default=0.0)
+
+    heat = models.FloatField(null=False, default=0.0)
+    cold = models.FloatField(null=False, default=0.0)
+    electric = models.FloatField(null=False, default=0.0)
+    toxin = models.FloatField(null=False, default=0.0)
+
+    blast = models.FloatField(null=False, default=0.0)
+    corrosive = models.FloatField(null=False, default=0.0)
+    gas = models.FloatField(null=False, default=0.0)
+    magnetic = models.FloatField(null=False, default=0.0)
+    radiation = models.FloatField(null=False, default=0.0)
+    viral = models.FloatField(null=False, default=0.0)

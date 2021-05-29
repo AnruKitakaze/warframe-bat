@@ -3,23 +3,9 @@
     <article class="media content-section">
         <div class="media-body">
             <div class="article-metadata">
-                <form method="get">
-                    <label for="weapons">Choose weapon</label>
-                    <select id="weapons" name="weapons">
-                        {% for weapon in weapons %}
-                            <option value="{{ weapon.weapon_name }}">{{ weapon.weapon_name }}</option>
-                        {% endfor %}
-                    </select>
-
-                    <label for="targets">Choose target</label>
-                    <select id="targets" name="targets">
-                        {% for target in targets %}
-                            <option value="{{ target.target_name }}">{{ target.target_name }}</option>
-                        {% endfor %}
-                    </select>
-
-                    <input type="range" name="target_level" min="1" max="180" value="100">
-
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form }}
                     <input class="btn btn-light" type="submit" value="Submit">
                 </form>
             </div>

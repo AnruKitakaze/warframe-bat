@@ -86,6 +86,9 @@ class Mod(models.Model):
     electric = models.FloatField(null=False, default=0.0)
     toxin = models.FloatField(null=False, default=0.0)
 
+    def __str__(self):
+        return self.mod_name
+
 
 class ResistancesOfDefenceResource(models.Model):
     defence_resource_name = models.CharField(primary_key=True, max_length=100)
@@ -106,9 +109,15 @@ class ResistancesOfDefenceResource(models.Model):
     radiation = models.FloatField(null=False, default=0.0)
     viral = models.FloatField(null=False, default=0.0)
 
+    def __str__(self):
+        return self.defence_resource_name
+
 
 class Fraction(models.Model):
     fraction_name = models.CharField(primary_key=True, max_length=100)
+
+    def __str__(self):
+        return self.fraction_name
 
 
 class Target(models.Model):
@@ -123,4 +132,7 @@ class Target(models.Model):
 
     target_armor_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_armor_type')
     target_armor_base_value = models.FloatField(null=False, default=0)
+
+    def __str__(self):
+        return self.target_name
 

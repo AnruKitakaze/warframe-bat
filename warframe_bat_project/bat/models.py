@@ -56,6 +56,8 @@ class WeaponAttackStats(models.Model):
 
 class Mod(models.Model):
     mod_name = models.CharField(primary_key=True, max_length=100)
+    mod_info = models.CharField(max_length=100, default='')
+    mod_tag = models.CharField(max_length=100, default='')
 
     target_weapon_name = models.CharField(max_length=100)
     target_weapon_slot = models.CharField(max_length=100)
@@ -64,7 +66,7 @@ class Mod(models.Model):
     damage = models.FloatField(null=False, default=0.0)
 
     crit_chance = models.FloatField(null=False, default=0.0)
-    crit_multiplier = models.FloatField(null=False, default=0.0)
+    crit_damage = models.FloatField(null=False, default=0.0)
     status_chance = models.FloatField(null=False, default=0.0)
     multishot = models.FloatField(null=False, default=0.0)
 

@@ -45,12 +45,9 @@ def get_dps(weapon_stats, target, target_level, stats):
 
     # Крч, тут получим финальный урон за тычку
     final_damage_per_hit = [0.0 for i in range(len(weapon_quantized_damage))]
+    # FIXME: Добавить функции для скейла брони от уровня
     armor = target.target_armor_base_value
     health = target.target_health_base_value
-    # FIXME: Заполнить листы ниже
-    print("Target is ", target.target_name)
-    print("Armor type is ", target.target_armor_type)
-    print("Armor base value is ", target.target_armor_base_value)
     # FIXME: Разнести по функциям это
     rodr = ResistancesOfDefenceResource.objects.get(defence_resource_name=target.target_armor_type)
     armor_modifiers_list = [rodr.impact, rodr.puncture, rodr.slash,
@@ -61,6 +58,7 @@ def get_dps(weapon_stats, target, target_level, stats):
     health_modifiers_list = [rodr.impact, rodr.puncture, rodr.slash,
                              rodr.heat, rodr.cold, rodr.electric, rodr.toxin,
                              rodr.blast, rodr.corrosive, rodr.gas, rodr.magnetic, rodr.radiation, rodr.viral]
+    # Находим урон за одну тычку
     for i in range(len(weapon_quantized_damage)):
         # Вообще-то это final_damage_modifier
         final_damage_per_hit[i] = (300 / (300 + armor * (1 - armor_modifiers_list[i]/100))) \

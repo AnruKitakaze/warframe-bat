@@ -126,13 +126,16 @@ class Target(models.Model):
     target_name = models.CharField(primary_key=True, max_length=100)
     target_fraction = models.ForeignKey(Fraction, on_delete=models.CASCADE)
 
-    target_shield_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_shield_type')
+    target_shield_type = models.ForeignKey(ResistancesOfDefenceResource,
+                                           on_delete=models.CASCADE, related_name='shield_type', default='None')
     target_shield_base_value = models.FloatField(null=False, default=0)
 
-    target_health_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_health_type')
+    target_health_type = models.ForeignKey(ResistancesOfDefenceResource,
+                                           on_delete=models.CASCADE, related_name='health_type', default='None')
     target_health_base_value = models.FloatField(null=False, default=0)
 
-    target_armor_type = models.ManyToManyField(ResistancesOfDefenceResource, related_name='target_armor_type')
+    target_armor_type = models.ForeignKey(ResistancesOfDefenceResource,
+                                          on_delete=models.CASCADE, related_name='armor_type', default='None')
     target_armor_base_value = models.FloatField(null=False, default=0)
 
     def __str__(self):

@@ -51,12 +51,23 @@ def get_dps(weapon_stats, target, target_level, stats):
     print("Target is ", target.target_name)
     print("Armor type is ", target.target_armor_type)
     print("Armor base value is ", target.target_armor_base_value)
-    # armor_modifiers_list = list(ResistancesOfDefenceResource.objects.get(defence_resource_name=target.target_armor_type).values())
-    #
-    # health_modifiers_list = list(ResistancesOfDefenceResource.objects.get(defence_resource_name=target.target_health_type).values())
-    # for i in range(len(weapon_quantized_damage)):
-    #     final_damage_per_hit[i] = (300 / (300 + armor * (1 - armor_modifiers_list[i]))) * (1 * health_modifiers_list[i])
+    # FIXME: Разнести по функциям это
+    rodr = ResistancesOfDefenceResource.objects.get(defence_resource_name=target.target_armor_type)
+    armor_modifiers_list = [rodr.impact, rodr.puncture, rodr.slash,
+                            rodr.heat, rodr.cold, rodr.electric, rodr.toxin,
+                            rodr.blast, rodr.corrosive, rodr.gas, rodr.magnetic, rodr.radiation, rodr.viral]
 
+    rodr = ResistancesOfDefenceResource.objects.get(defence_resource_name=target.target_health_type)
+    health_modifiers_list = [rodr.impact, rodr.puncture, rodr.slash,
+                             rodr.heat, rodr.cold, rodr.electric, rodr.toxin,
+                             rodr.blast, rodr.corrosive, rodr.gas, rodr.magnetic, rodr.radiation, rodr.viral]
+    for i in range(len(weapon_quantized_damage)):
+        # Вообще-то это final_damage_modifier
+        final_damage_per_hit[i] = (300 / (300 + armor * (1 - armor_modifiers_list[i]/100))) \
+                                  * (1 + armor_modifiers_list[i]/100) * (1 + health_modifiers_list[i]/100)
+        final_damage_per_hit[i] *= weapon_quantized_damage[i]
+
+    print('Final damage is ', sum(final_damage_per_hit))
     dps = damage_per_shot
 
     return dps

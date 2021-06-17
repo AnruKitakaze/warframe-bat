@@ -6,9 +6,11 @@
                 <form method="POST">
                     {% csrf_token %}
                     {{ form }}
-                    <input class="btn btn-light" type="submit" value="Get DPS">
+                    <input class="btn btn-light" type="submit" value="Optimize DPS">
                 </form>
             </div>
+            <p>Put these mods in the exact order: {{ mods }}</p>
+            <p>Burst DPS is {{ dps }}</p>
         </div>
     </article>
     {% for weapon in weapons %}

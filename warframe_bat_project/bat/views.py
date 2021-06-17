@@ -7,6 +7,8 @@ from .average_dps_optimization import optimize
 
 
 def home(request):
+    dps = 0
+    mods = ''
     if request.method == 'POST':
         form = OptimizeAverageDpsForm(request.POST)
 
@@ -22,7 +24,7 @@ def home(request):
             # print(current_target.target_name)
             # print(target_level_data)
             # print('sent')
-            optimize(current_weapon, current_target, target_level_data)
+            dps, mods = optimize(current_weapon, current_target, target_level_data)
     else:
         form = OptimizeAverageDpsForm()
 
@@ -30,7 +32,9 @@ def home(request):
         'weapons': Weapon.objects.all(),
         'targets': Target.objects.all(),
         'title': 'Home',
-        'form': form
+        'form': form,
+        'mods': mods,
+        'dps': dps
     }
 
     return render(request, 'bat/home.html', context)
